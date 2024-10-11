@@ -1,0 +1,20 @@
+def c_cipher(text, shift, mode):
+    res = ""
+    shift = shift % 26 
+
+    for char in text:
+        if 'A' <= char <= 'Z': 
+            if mode == 'encrypt':
+                res += chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+            elif mode == 'decrypt':
+                res += chr((ord(char) - ord('A') - shift) % 26 + ord('A'))
+        elif 'a' <= char <= 'z':  
+            if mode == 'encrypt':
+                res += chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
+            elif mode == 'decrypt':
+                res += chr((ord(char) - ord('a') - shift) % 26 + ord('a'))
+        else:
+            res += char  
+
+    return res
+
